@@ -22,10 +22,14 @@ Git - Hệ thống quản lý phiên bản
 11/ git show: để xem đã có thay đổi gì 
 12/ git diff: xem net difference giữa các version đã commit
 
+- Branch dùng để ghi lại trạng thái thay đổi của nhánh. Các thay đổi trong branch không ảnh hưởng đến đến branch master hay các branch khác. 
+- Khi làm 1 project, sẽ có nhiều thành viên đồng thời chỉnh sửa cùng lúc. Vì vậy cần dùng branch. Các thành viên của nhóm sẽ tạo branch dùng riêng cho công việc của mình từ branch chính để không ảnh hưởng đến thành viên khác. Sau đó, những thành viên đã hoàn thành công việc merge các thay đổi vào branch chính. 
+- Trong trường hợp nhiều thành viên cùng chỉnh sửa một vấn đề và tạo conflict thì sẽ dễ tìm ra những thay đổi và giải quyết vấn đề nhanh hơn.
+
 13/ git branch new_branch: để tạo một nhánh khác 
-14/ git checkout new_branch: để chuyển sang branch mình muốn dùng
-14/ git merge: đồng bộ hoá các thay đổi của nhiều bên khác nhau
-15/ Khi có conflict, phải resolve bằng tay, phải chọn phần nào mình muốn push lên 
+14/ git checkout new_branch: để chuyển đổi branch làm việc
+14/ git merge: đồng bộ hoá các thay đổi của nhiều branch khác nhau vào branch master
+15/ Khi có conflict, resolve bằng tay, chọn phần nào mình muốn push lên 
 16/ pull-request: tool để review code trước khi cho quyền merge
 
 
