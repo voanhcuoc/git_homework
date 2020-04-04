@@ -7,12 +7,13 @@ Git - Hệ thống quản lý phiên bản
 	+ Local repository: là repository trên máy tính cá nhân
 	+ Remote repository: là repository trên server, nơi nhiều người có thể truy cập. Được sử dụng khi ta muốn upload các công việc của bản thân hoặc muốn truy cập công việc của người khác.
 
-- Commit để ghi lại việc thêm/thay đổi file vào repository. Khi thực hiện commit, trong repository sẽ ghi lại sự khác biệt từ trạng thái đã commit lần trước đến trạng thái commit gần nhất. Các commit được ghi lại theo thứ tự thời gian.
-
 1/ git init: tạo một kho chứa git mới
 2/ git status: để check trạng thái các file trong git
 3/ git add ten_file: để cập nhật file vào staging area
 4/ git status: để check lại xem các file mong muốn đã ready để được commit hay chưa
+
+- Commit để ghi lại việc thêm/thay đổi file vào repository. Khi thực hiện commit, trong repository sẽ ghi lại sự khác biệt từ trạng thái đã commit lần trước đến trạng thái commit gần nhất. Các commit được ghi lại theo thứ tự thời gian.
+
 5/ git commit -m "Mục đích của việc commit"
 6/ Sau khi đã commit file vào local repository, dùng git log để kiểm tra lại xem file đã được commit chưa
 7/ Để đồng bộ local repository lên server, dùng lệnh git remote add origin để xác định địa chỉ trên online repository mà git cần push file lên
@@ -28,8 +29,9 @@ Git - Hệ thống quản lý phiên bản
 
 13/ git branch new_branch: để tạo một nhánh khác 
 14/ git checkout new_branch: để chuyển đổi branch làm việc
-14/ git merge: đồng bộ hoá các thay đổi của nhiều branch khác nhau vào branch master
-15/ Khi có conflict, resolve bằng tay, chọn phần nào mình muốn push lên 
-16/ pull-request: tool để review code trước khi cho quyền merge
+15/ git merge: đồng bộ hoá các thay đổi của nhiều branch khác nhau vào branch master
+16/ Khi có conflict, resolve bằng tay, chọn phần nào mình muốn push lên 
+17/ pull-request: tool để review code trước khi cho quyền merge
+
 
 
