@@ -1,0 +1,9 @@
+1/ Đầu tiên dùng lệnh git init tạo một thư mục repository để chứa project sẽ làm
+2/ Dùng lệnh git status để check xem các trạng thái các file 
+3/ Dùng lệnh git add ten_file để bỏ file vào staging
+4/ Dùng lệnh git status để check lại xem các file mong muốn đã ready để được commit hay chưa
+5/ Dùng lệnh git commit -m "Mục đích của việc commit"
+6/ Sau khi đã commit file vào local repository, dùng git log để kiểm tra lại xem file đã được commit chưa
+7/ Để đồng bộ local repository lên mạng, dùng lệnh git remote add origin để xác định địa chỉ trên online repository mà git cần push file lên
+8/ Dùng lệnh git push -u origin master để push file lên branch master trên github
+9/ Lúc này source code đã có trên git hub
