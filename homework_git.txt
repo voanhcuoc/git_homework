@@ -1,39 +1,41 @@
 Git - Hệ thống quản lý phiên bản
-- lưu trạng thái của file dưới dạng lịch sử cập nhật
-- có thể đưa file đã chỉnh sửa về trạng thái cũ hay hiển thị sự khác biệt ở những dòng chỉnh sửa
+- lưu các phiên bản của 1 thư mục dưới dạng lịch sử cập nhật
+- có thể đưa file đã chỉnh sửa về phiên bản cũ và hiển thị sự khác biệt giữa các phiên bản theo đơn vị từng dòng
 - khi chia sẻ file trong một nhóm, server sẽ hiện ra cảnh báo khi có hiện tượng ghi đè/ xoá mất các nội dung 
 
-- Repository là nơi ghi lại trạng thái thay đổi của file, được chia thành local repository và remote repository.
-	+ Local repository: là repository trên máy tính cá nhân
-	+ Remote repository: là repository trên server, nơi nhiều người có thể truy cập. Được sử dụng khi ta muốn upload các công việc của bản thân hoặc muốn truy cập công việc của người khác.
+- Repository là nơi ghi lại trạng thái thay đổi của file:
+	+ Local repository: là repository trên máy tính cá nhân, có thể add các repo khác làm remote thông qua URL của repo khác đó
+	+ Remote repository: là repository ở bất cứ đâu mà có thể access bằng URL.
+        + Bản chất local và remote là giống nhau, local và remote chỉ là quy ước để phân biệt từ hệ quy chiếu của 1 người dùng cụ thể
 
-1/ git init: tạo một local repository mới
-2/ git clone: sao chép một repository đã tồn tại trên server về máy
-3/ git status: để check trạng thái các file trong git
+1/ git init: khởi tạo một local repository mới trong 1 thư mục
+2/ git clone: sao chép một repository đã tồn tại về máy thông qua URL
+3/ git status: để check trạng thái của repo xem có những thay đổi nào chưa được commit
 4/ git add ten_file: để cập nhật file từ working directory vào staging area
-5/ git status: để check lại xem các file mong muốn đã ready để được commit hay chưa
 
-- Commit để ghi lại việc thêm/thay đổi file vào repository. Khi thực hiện commit, trong repository sẽ ghi lại sự khác biệt từ trạng thái đã commit lần trước đến trạng thái commit gần nhất. Các commit được ghi lại theo thứ tự thời gian.
+- Commit để ghi lại việc thêm/thay đổi file vào repository. Khi thực hiện commit, trong repository sẽ ghi lại sự khác biệt từ trạng thái đã commit lần trước đến trạng thái commit hiện tại. Các commit được ghi lại theo thứ tự thời gian.
 
-6/ git commit -m "Mục đích của việc commit"
-7/ Sau khi đã commit file vào local repository, dùng git log để kiểm tra lại xem file đã được commit chưa
-8/ Để đồng bộ local repository lên server, dùng lệnh git remote add origin để xác định địa chỉ trên online repository mà git cần push file lên
-9/ Dùng lệnh git push -u origin master để push file lên branch master trên github
-10/ Sau khi push, source code đã có trên git hub
-11/ git checkout commit: để trở về một version nào đã được commit trước đó
-12/ git show : để xem đã có thay đổi gì trong đợt commit đó
-13/ git diff : theo dõi sự thay đổi trong những lần commit
+6/ git commit -m "Nội dung của thay đổi được commit"
+7/ Sau khi đã commit file vào local repository, có thể dùng git log để kiểm tra lại xem file đã được commit chưa
+8/ Để đồng bộ local repository lên server, trước hết cần dùng lệnh git remote để add repo trên server thành remote của local repo
+9/ Dùng lệnh `git push -u <remote> <branch>` để push 1 branch lên remote và set remote mặc định cho branch đó, như vậy về sau mỗi lần ta push branch đó nó tự biết phải lên remote nào, nên chỉ cần `git push`
+10/ Sau khi push, những commit mới đã có trên server
+11/ git checkout <commit or branch>: để chuyển nội dung thư mục về một version nào đã được commit trước đó
+12/ git show <commit> : để xem nội dung một commit
+13/ git diff <commit>..<commit>: theo dõi sự thay đổi giữa 2 commit
 
-- Branch dùng để ghi lại trạng thái thay đổi của nhánh. Các thay đổi trong một branch không ảnh hưởng đến branch master hay các branch khác. 
-- Khi làm 1 project, sẽ có nhiều thành viên đồng thời chỉnh sửa cùng lúc. Vì vậy cần dùng branch. Các thành viên của nhóm sẽ tạo branch nhánh cho riêng mình để không ảnh hưởng đến công việc của các thành viên khác. Sau đó, những thành viên đã hoàn thành công việc merge các thay đổi vào branch chính. 
-- Trong trường hợp nhiều thành viên cùng chỉnh sửa một vấn đề và tạo conflict thì sẽ dễ tìm ra những thay đổi và giải quyết vấn đề nhanh hơn.
+- Branch dùng để ghi lại trạng thái thay đổi của nhánh. Các thay đổi trong một branch không ảnh hưởng đến branch master hay các branch khác.
+- Khi làm 1 project, sẽ có nhiều thành viên đồng thời chỉnh sửa cùng lúc. Vì vậy cần dùng branch. Các thành viên của nhóm sẽ tạo branch nhánh cho riêng mình để không ảnh hưởng đến công việc của các thành viên khác. Sau đó, những thành viên đã hoàn thành công việc merge các thay đổi vào branch chính.
+- Trong trường hợp nhiều thành viên cùng chỉnh sửa một vấn đề và tạo conflict thì sẽ dễ tìm ra những thay đổi và giải quyết vấn đề nhanh hơn, bằng tay.
+- Branch còn có thể dùng để thử nghiệm các thay đổi khác nhau, như vậy ta có thể isolate các task khác nhau và hoàn thành sau đó mới merge lại để tích hợp các task, những vấn đề phát sinh từ task này sẽ ko ảnh hưởng task kia.
 
 14/ git branch new_branch: để tạo một nhánh khác 
 15/ git checkout new_branch: để chuyển đổi sang nhánh new_branch
-16/ git merge: đồng bộ hoá các thay đổi của nhiều branch khác nhau vào branch master
-17/ Khi có conflict, resolve bằng tay, chọn phần nào mình muốn push lên 
-18/ Issues: Khi có một số chỗ cần sửa đổi trong repository, mình có thể comment ý kiến vào repository đó. Sau đó người quản trị có thể click vào issue và xem xét, thay đổi. Khi sửa đổi hoàn tất thì sẽ đóng issue đó lại. 
-18/ Pull requests: là chức năng thông báo với chủ repository về các thay đổi đã được đẩy lên Github. Chủ repository review lại các thay đổi và có thể chấp thuận cho merge hay không.
+16/ git merge new_branch: merge new_branch vào branch hiện tại đang ở
+17/ Khi có conflict, resolve bằng tay, chọn phần nào mình muốn commit
 
+GitHub
 
+1/ Issues: Khi có một số chỗ cần sửa đổi trong repository, mình có thể comment ý kiến vào repository đó. Sau đó người quản trị có thể click vào issue và xem xét, thay đổi. Khi sửa đổi hoàn tất thì sẽ đóng issue đó lại. 
+2/ Pull requests: yêu cầu chủ repository merge 1 branch của mình và repo của họ. Chủ repository review lại các thay đổi và có thể chấp thuận cho merge hay không.
 
